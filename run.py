@@ -22,11 +22,24 @@ def main():
     print("3. Check income summary by category")
     print("4. Add a new expense")
     print("5. Add a new income\n")
+
     # Validates option, based on love sandwiches walkthrough project
     while True:
         choice = input("Please chosse an option by typing a number from the menu above: ")
 
         if validate_choice(choice):
             break
+    
+    if int(choice) == 1:
+        print("choice: check balance.")
+    elif int(choice) == 2:
+        print("choice: check expenses summary.")
+    elif int(choice) == 3:
+        print("choice: check income summary.")
+    elif int(choice) == 4:
+        print("choice: add new expense.")
+    elif int(choice) == 5:
+        print("choice: add ne income.")
+
 
 main()
