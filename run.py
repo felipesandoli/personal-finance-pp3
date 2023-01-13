@@ -16,6 +16,11 @@ def validate_choice(choice):
 
 def main():
     while True:
+        """
+        Displays the menu to the user. After performing an action, the menu is displayed again
+        in a loop until the user decides to exit by choosing the exit option in the menu, where
+        the program will close.
+        """
         print("Welcome to your personal finance.\n")
         print("What would you like to do?\n")
         print("1. Check balance")
