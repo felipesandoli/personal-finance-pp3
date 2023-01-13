@@ -1,5 +1,18 @@
-
-
+# Validation method inspired by love sandwiches walkthrough project
+def validate_choice(choice):
+    """
+    Tries to convert choice into an integer and checks if it is in the range
+    of possible choices. Raises ValueError if cannot convert into an integer or
+    if it is outside of range.
+    """
+    try:
+        int(choice)
+        if int(choice) not in range(1,6):
+            raise ValueError("Option not found.")
+    except ValueError as e:
+        print(f"{e}. Try again.")
+        return False
+    return True
 
 def main():
     print("Welcome to your personal finance.\n")
@@ -9,6 +22,11 @@ def main():
     print("3. Check income summary by category")
     print("4. Add a new expense")
     print("5. Add a new income\n")
-    input("Please chosse an option by typing a number from the menu above:")
+    # Validates option, based on love sandwiches walkthrough project
+    while True:
+        choice = input("Please chosse an option by typing a number from the menu above: ")
+
+        if validate_choice(choice):
+            break
 
 main()
