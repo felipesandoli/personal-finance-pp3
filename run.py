@@ -7,7 +7,7 @@ def validate_choice(choice):
     """
     try:
         int(choice)
-        if int(choice) not in range(1,6):
+        if int(choice) not in range(1,7):
             raise ValueError("Option not found.")
     except ValueError as e:
         print(f"{e}. Try again.")
@@ -15,31 +15,35 @@ def validate_choice(choice):
     return True
 
 def main():
-    print("Welcome to your personal finance.\n")
-    print("What would you like to do?\n")
-    print("1. Check balance")
-    print("2. Check expenses summary by category")
-    print("3. Check income summary by category")
-    print("4. Add a new expense")
-    print("5. Add a new income\n")
-
-    # Validates option, based on love sandwiches walkthrough project
     while True:
-        choice = input("Please chosse an option by typing a number from the menu above: ")
+        print("Welcome to your personal finance.\n")
+        print("What would you like to do?\n")
+        print("1. Check balance")
+        print("2. Check expenses summary by category")
+        print("3. Check income summary by category")
+        print("4. Add a new expense")
+        print("5. Add a new income")
+        print("6. Exit\n")
 
-        if validate_choice(choice):
+        # Validates option, based on love sandwiches walkthrough project
+        while True:
+            choice = input("Please chosse an option by typing a number from the menu above: ")
+
+            if validate_choice(choice):
+                break
+        
+        if int(choice) == 1:
+            print("choice: check balance.\n")
+        elif int(choice) == 2:
+            print("choice: check expenses summary.\n")
+        elif int(choice) == 3:
+            print("choice: check income summary.\n")
+        elif int(choice) == 4:
+            print("choice: add new expense.\n")
+        elif int(choice) == 5:
+            print("choice: add ne income.\n")
+        elif int(choice) == 6:
+            print("Exiting program. Goodbye!")
             break
-    
-    if int(choice) == 1:
-        print("choice: check balance.")
-    elif int(choice) == 2:
-        print("choice: check expenses summary.")
-    elif int(choice) == 3:
-        print("choice: check income summary.")
-    elif int(choice) == 4:
-        print("choice: add new expense.")
-    elif int(choice) == 5:
-        print("choice: add ne income.")
-
 
 main()
