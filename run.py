@@ -112,7 +112,15 @@ def main():
     choice = display_menu()
     evaluate_choice(choice)
     
-    
-    #print("Exiting program. Goodbye!")    
+    while True:
+        again = input("Would you like to do something else? (Y/N)")
+        if again.upper() == "Y":
+            choice = display_menu()
+            evaluate_choice(choice)
+        elif again.upper() == "N":
+            print("Exiting program. Goodbye!")
+            break
+        else:
+            print("Invalid answer, please type Y or N.\n")   
 
 main()
