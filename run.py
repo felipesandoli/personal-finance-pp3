@@ -47,6 +47,9 @@ def calculate_balance():
     return total_income - total_expenses
 
 def display_balance(balance):
+    """
+    Displays the current balance to the terminal.
+    """
     print(f"Your current balance is: ${balance:.2f}\n") 
 
 # Validation method inspired by love sandwiches walkthrough project
