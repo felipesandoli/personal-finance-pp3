@@ -1,18 +1,18 @@
 expenses_categories = {
-    "1": "Housing"
-    "2": "Transportation"
-    "3": "Groceries"
-    "4": "Utilities"
-    "5": "Medical & Healthcare"
-    "6": "Personal Spending"
-    "7": "Leisure"
+    "1": "Housing",
+    "2": "Transportation",
+    "3": "Groceries",
+    "4": "Utilities",
+    "5": "Medical & Healthcare",
+    "6": "Personal Spending",
+    "7": "Leisure",
     "8": "Others"
 }
 
 income_categories = {
-    "1": "Salary & Wages"
-    "2": "Investment returns"
-    "3": "Rental Income"
+    "1": "Salary & Wages",
+    "2": "Investment returns",
+    "3": "Rental Income",
     "4": "Others"
 }
 
