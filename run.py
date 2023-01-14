@@ -45,7 +45,9 @@ def calculate_balance():
     for income in incomes:
         total_income += float(income)
     return total_income - total_expenses
-    
+
+def display_balance(balance):
+    print(f"Your current balance is: ${balance:.2f}\n") 
 
 # Validation method inspired by love sandwiches walkthrough project
 def validate_choice(choice):
