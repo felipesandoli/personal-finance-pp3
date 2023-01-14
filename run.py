@@ -92,7 +92,8 @@ def main():
                 break
         
         if int(choice) == 1:
-            print("choice: check balance.\n")
+            balance = calculate_balance()
+            display_balance(balance)
         elif int(choice) == 2:
             print("choice: check expenses summary.\n")
         elif int(choice) == 3:
@@ -105,4 +106,4 @@ def main():
             print("Exiting program. Goodbye!")
             break
 
-#main()
+main()
