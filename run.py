@@ -61,7 +61,7 @@ def evaluate_choice(choice):
         display_balance(balance)
     elif int(choice) == 2:
         expenses_by_category = calculate_expenses_by_category()
-        print(expenses_by_category)
+        display_expenses_by_category(expenses_by_category)
     elif int(choice) == 3:
         print("choice: check income summary.\n")
     elif int(choice) == 4:
@@ -101,6 +101,15 @@ def calculate_expenses_by_category():
             if value.lower() == category:
                 expenses_by_category[value] += float(expense)
     return expenses_by_category
+
+def display_expenses_by_category(expense_dict):
+    """"
+    Displays the total expenses by each category to the terminal
+    """
+    print("The total amount spent by each category is:\n")
+    for key in expense_dict:
+        print(f"{key}: ${expense_dict[key]:.2f}")
+    print("\n")
 
 # Validation method inspired by love sandwiches walkthrough project
 def validate_choice(choice):
