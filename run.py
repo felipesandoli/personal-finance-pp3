@@ -41,8 +41,7 @@ def display_menu():
     print("2. Check expenses summary by category")
     print("3. Check income summary by category")
     print("4. Add a new expense")
-    print("5. Add a new income")
-    print("6. Exit\n")
+    print("5. Add a new income\n")
 
     # Validates option, based on love sandwiches walkthrough project
     while True:
@@ -52,6 +51,22 @@ def display_menu():
             break
 
     return choice
+
+def evaluate_choice(choice):
+    """
+    Evaluates the user choice and calls the respective functions.
+    """
+    if int(choice) == 1:
+        balance = calculate_balance()
+        display_balance(balance)
+    elif int(choice) == 2:
+        print("choice: check expenses summary.\n")
+    elif int(choice) == 3:
+        print("choice: check income summary.\n")
+    elif int(choice) == 4:
+        print("choice: add new expense.\n")
+    elif int(choice) == 5:
+        print("choice: add ne income.\n")
 
 def calculate_balance():
     """
@@ -82,7 +97,7 @@ def validate_choice(choice):
     """
     try:
         int(choice)
-        if int(choice) not in range(1,7):
+        if int(choice) not in range(1,6):
             raise ValueError("Option not found.")
     except ValueError as e:
         print(f"{e}. Try again.")
@@ -91,25 +106,13 @@ def validate_choice(choice):
 
 def main():
     """
-    Displays the menu to the user. After performing an action, the menu is displayed again
-    in a loop until the user decides to exit by choosing the exit option in the menu, where
-    the program will close.
+    Calls functin for displaying the menu to the terminal, then calls function to evaluate the user choice.
     """
     print("Welcome to your personal finance.\n")
     choice = display_menu()
-
-    if int(choice) == 1:
-        balance = calculate_balance()
-        display_balance(balance)
-    elif int(choice) == 2:
-        print("choice: check expenses summary.\n")
-    elif int(choice) == 3:
-        print("choice: check income summary.\n")
-    elif int(choice) == 4:
-        print("choice: add new expense.\n")
-    elif int(choice) == 5:
-        print("choice: add ne income.\n")
-    elif int(choice) == 6:
-        print("Exiting program. Goodbye!")    
+    evaluate_choice(choice)
+    
+    
+    #print("Exiting program. Goodbye!")    
 
 main()
