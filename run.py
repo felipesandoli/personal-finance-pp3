@@ -60,7 +60,8 @@ def evaluate_choice(choice):
         balance = calculate_balance()
         display_balance(balance)
     elif int(choice) == 2:
-        print("choice: check expenses summary.\n")
+        expenses_by_category = calculate_expenses_by_category()
+        print(expenses_by_category)
     elif int(choice) == 3:
         print("choice: check income summary.\n")
     elif int(choice) == 4:
@@ -87,6 +88,19 @@ def display_balance(balance):
     Displays the current balance to the terminal.
     """
     print(f"Your current balance is: ${balance:.2f}\n") 
+
+def calculate_expenses_by_category():
+    """
+    Calculate the total amount spent for each expense category.
+    """
+    expenses = SHEET.worksheet("expenses").col_values(1)
+    worksheet_categories = SHEET.worksheet("expenses").col_values(2)
+    expenses_by_category = {key: 0 for key in expenses_categories.values()}
+    for value in expenses_categories.values():
+        for expense, category in zip(expenses, worksheet_categories):
+            if value.lower() == category:
+                expenses_by_category[value] += float(expense)
+    return expenses_by_category
 
 # Validation method inspired by love sandwiches walkthrough project
 def validate_choice(choice):
