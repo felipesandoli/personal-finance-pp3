@@ -32,6 +32,21 @@ income_categories = {
     "4": "Others"
 }
 
+def calculate_balance():
+    """
+    Gets data from spreadsheet. Calculates and returns the balance.
+    """
+    expenses = SHEET.worksheet("expenses").col_values(1)[1:]
+    incomes = SHEET.worksheet("income").col_values(1)[1:]
+    total_expenses = 0
+    total_income = 0
+    for expense in expenses:
+        total_expenses += float(expense)
+    for income in incomes:
+        total_income += float(income)
+    return total_income - total_expenses
+    
+
 # Validation method inspired by love sandwiches walkthrough project
 def validate_choice(choice):
     """
@@ -85,4 +100,4 @@ def main():
             print("Exiting program. Goodbye!")
             break
 
-main()
+#main()
