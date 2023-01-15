@@ -65,7 +65,6 @@ def evaluate_choice(choice):
     elif int(choice) == 3:
         income_by_category = calculate_amounts_by_category("income")
         display_amounts_by_category(income_by_category, "income")
-        print("\n")
     elif int(choice) == 4:
         print("choice: add new expense.\n")
     elif int(choice) == 5:
