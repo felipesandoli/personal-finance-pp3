@@ -41,7 +41,8 @@ def display_menu():
     print("2. Check expenses summary by category")
     print("3. Check income summary by category")
     print("4. Add a new expense")
-    print("5. Add a new income\n")
+    print("5. Add a new income")
+    print("6. Exit\n")
 
     # Validates option, based on love sandwiches walkthrough project
     while True:
@@ -69,6 +70,8 @@ def evaluate_choice(choice):
         print("choice: add new expense.\n")
     elif int(choice) == 5:
         print("choice: add ne income.\n")
+    elif int(choice) == 6:
+        print("Exiting program. Goodbye!\n")
 
 def calculate_balance():
     """
@@ -127,7 +130,7 @@ def validate_choice(choice):
     """
     try:
         int(choice)
-        if int(choice) not in range(1,6):
+        if int(choice) not in range(1,7):
             raise ValueError("Option not found.")
     except ValueError as e:
         print(f"{e}. Try again.")
@@ -143,6 +146,8 @@ def main():
     evaluate_choice(choice)
     
     while True:
+        if choice == "6":
+            break
         again = input("Would you like to do something else? (Y/N)")
         if again.upper() == "Y":
             choice = display_menu()
