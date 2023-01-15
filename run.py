@@ -46,7 +46,7 @@ def display_menu():
 
     # Validates option, based on love sandwiches walkthrough project
     while True:
-        choice = input("Please chosse an option by typing a number from the menu above: ")
+        choice = input("Please chosse an option by typing a number from the menu above: \n")
 
         if validate_choice(choice):
             break
@@ -148,7 +148,7 @@ def main():
     while True:
         if choice == "6":
             break
-        again = input("Would you like to do something else? (Y/N)")
+        again = input("Would you like to do something else? (Y/N)\n")
         if again.upper() == "Y":
             choice = display_menu()
             evaluate_choice(choice)
