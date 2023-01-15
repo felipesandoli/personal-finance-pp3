@@ -60,7 +60,7 @@ def evaluate_choice(choice):
         balance = calculate_balance()
         display_balance(balance)
     elif int(choice) == 2:
-        expenses_by_category = calculate_expenses_by_category()
+        expenses_by_category = calculate_amounts_by_category("expenses")
         display_expenses_by_category(expenses_by_category)
     elif int(choice) == 3:
         print("choice: check income summary.\n")
@@ -89,18 +89,24 @@ def display_balance(balance):
     """
     print(f"Your current balance is: ${balance:.2f}\n") 
 
-def calculate_expenses_by_category():
+def calculate_amounts_by_category(type):
     """
-    Calculate the total amount spent for each expense category.
+    Calculate the total amount spent for each expense category or the total amount of income
+    for each income category.
     """
-    expenses = SHEET.worksheet("expenses").col_values(1)
-    worksheet_categories = SHEET.worksheet("expenses").col_values(2)
-    expenses_by_category = {key: 0 for key in expenses_categories.values()}
-    for value in expenses_categories.values():
-        for expense, category in zip(expenses, worksheet_categories):
+    amounts = SHEET.worksheet(type).col_values(1) 
+    worksheet_categories = SHEET.worksheet(type).col_values(2)
+    if type == "expenses":
+        amounts_by_category = {key: 0 for key in expenses_categories.values()}
+        categories = expenses_categories
+    elif type == "income":
+        amounts_by_category = {key: 0 for key in income_categories.values()}
+        categories = income_categories
+    for value in categories.values():
+        for amount, category in zip(amounts, worksheet_categories):
             if value.lower() == category:
-                expenses_by_category[value] += float(expense)
-    return expenses_by_category
+                amounts_by_category[value] += float(amount)
+    return amounts_by_category
 
 def display_expenses_by_category(expense_dict):
     """"
