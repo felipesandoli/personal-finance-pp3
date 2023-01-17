@@ -85,6 +85,7 @@ def calculate_balance():
     """
     Gets data from spreadsheet. Calculates and returns the balance.
     """
+    print("Calculating balance...")
     expenses = SHEET.worksheet("expenses").col_values(1)[1:]
     incomes = SHEET.worksheet("income").col_values(1)[1:]
     total_expenses = 0
@@ -108,6 +109,7 @@ def calculate_amounts_by_category(type):
     Calculate the total amount spent for each expense category or the total amount of income
     for each income category.
     """
+    print(f"Calculating your {type} summary...")
     amounts = SHEET.worksheet(type).col_values(1)
     worksheet_categories = SHEET.worksheet(type).col_values(2)
     if type == "expenses":
