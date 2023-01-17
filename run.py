@@ -140,8 +140,12 @@ def validate_choice(choice):
     """
     try:
         int(choice)
+    except:
+        print("Not a number. Please try again.")
+        return False
+    try:
         if int(choice) not in range(1, 7):
-            raise ValueError("Option not found.")
+            raise ValueError("Option not found")
     except ValueError as e:
         print(f"{e}. Try again.")
         return False
