@@ -165,7 +165,8 @@ def main():
             break
         again = input("Would you like to do something else? (Y/N)\n")
         if again.upper() == "Y":
-            os.system("cls")
+            # Clear terminal, code taken from Stack Overflow
+            os.system("cls" if os.name == "nt" else "clear")
             choice = display_menu()
             evaluate_choice(choice)
         elif again.upper() == "N":
