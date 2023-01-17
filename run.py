@@ -172,6 +172,8 @@ def main():
             choice = display_menu()
             evaluate_choice(choice)
         elif again.upper() == "N":
+            # Clear terminal, code taken from Stack Overflow
+            os.system("cls" if os.name == "nt" else "clear")
             print("Exiting program. Goodbye!")
             break
         else:
