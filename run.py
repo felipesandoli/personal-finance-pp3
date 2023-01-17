@@ -62,6 +62,8 @@ def evaluate_choice(choice):
     """
     Evaluates the user choice and calls the respective functions.
     """
+    # Clear terminal, code taken from Stack Overflow
+    os.system("cls" if os.name == "nt" else "clear")
     if int(choice) == 1:
         balance = calculate_balance()
         display_balance(balance)
