@@ -28,7 +28,7 @@ category_dictionary = {
     "8": "Others",
     },
 
-    "income_categories": {
+    "incomes_categories": {
         "1": "Salary & Wages",
         "2": "Investment returns",
         "3": "Rental Income",
@@ -74,12 +74,16 @@ def evaluate_choice(choice):
         expenses_by_category = calculate_amounts_by_category("expenses")
         display_amounts_by_category(expenses_by_category, "expenses")
     elif int(choice) == 3:
-        income_by_category = calculate_amounts_by_category("income")
-        display_amounts_by_category(income_by_category, "income")
+        income_by_category = calculate_amounts_by_category("incomes")
+        display_amounts_by_category(income_by_category, "incomes")
     elif int(choice) == 4:
-        print("choice: add new expense.\n")
+        amount, category = get_amount("expense")
+        print(f"Adding ${amount} spent on {category} to the worksheet...")
+        #add new expense to worksheet
     elif int(choice) == 5:
-        print("choice: add ne income.\n")
+        amount, category = get_amount("income")
+        print(f"Adding ${amount} earned from {category} to the worksheet...")
+        #add new expense to worksheet
     elif int(choice) == 6:
         print("Exiting program. Goodbye!\n")
 
@@ -90,7 +94,7 @@ def calculate_balance():
     """
     print("Calculating balance...")
     expenses = SHEET.worksheet("expenses").col_values(1)[1:]
-    incomes = SHEET.worksheet("income").col_values(1)[1:]
+    incomes = SHEET.worksheet("incomes").col_values(1)[1:]
     total_expenses = 0
     total_income = 0
     for expense in expenses:
@@ -141,14 +145,14 @@ def get_amount(type):
     print(f"Adding a new {type}...\n")
     amount = input("Please enter the amount you would like to add:\n")
     #validate_amount()
-    categories = category_dictionary[f"{type}_categories"]
+    categories = category_dictionary[f"{type}s_categories"]
     print(f"Please choose one of the following categories for this {type}\n")
     for item in categories:
         print(f"{item}: {categories[item]}")
     print("\n")
     category_index = input(f"Please enter the number corresponding to your category:\n")
     #validate_category
-    return (amount, category_dictionary[f"{type}_categories"][category_index])
+    return (amount, category_dictionary[f"{type}s_categories"][category_index])
 
 
 # Validation method inspired by love sandwiches walkthrough project
