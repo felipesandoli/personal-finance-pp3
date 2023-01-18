@@ -15,7 +15,9 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 SHEET = GSPREAD_CLIENT.open("personal-finance-pp3")
 
-expenses_categories = {
+
+category_dictionary = {
+    "expenses_categories": {
     "1": "Housing",
     "2": "Transportation",
     "3": "Groceries",
@@ -24,13 +26,14 @@ expenses_categories = {
     "6": "Personal Spending",
     "7": "Leisure",
     "8": "Others",
-}
+    },
 
-income_categories = {
-    "1": "Salary & Wages",
-    "2": "Investment returns",
-    "3": "Rental Income",
-    "4": "Others",
+    "income_categories": {
+        "1": "Salary & Wages",
+        "2": "Investment returns",
+        "3": "Rental Income",
+        "4": "Others",
+    }
 }
 
 
@@ -112,13 +115,8 @@ def calculate_amounts_by_category(type):
     print(f"Calculating your {type} summary...")
     amounts = SHEET.worksheet(type).col_values(1)
     worksheet_categories = SHEET.worksheet(type).col_values(2)
-    if type == "expenses":
-        amounts_by_category = {key: 0 for key in expenses_categories.values()}
-        categories = expenses_categories
-    elif type == "income":
-        amounts_by_category = {key: 0 for key in income_categories.values()}
-        categories = income_categories
-    for value in categories.values():
+    amounts_by_category = {key: 0 for key in category_dictionary[f"{type}_categories"].values()}
+    for value in category_dictionary[f"{type}_categories"].values():
         for amount, category in zip(amounts, worksheet_categories):
             if value.lower() == category:
                 amounts_by_category[value] += float(amount)
