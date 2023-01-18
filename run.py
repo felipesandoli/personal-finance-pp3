@@ -77,9 +77,26 @@ def evaluate_choice(choice):
         income_by_category = calculate_amounts_by_category("incomes")
         display_amounts_by_category(income_by_category, "incomes")
     elif int(choice) == 4:
-        amount, category = get_amount("expense")
-        print(f"Adding ${amount} spent on {category} to the worksheet...")
-        #add new expense to worksheet
+        confirm = ""
+        while True:
+            if (confirm.upper() == "") or (confirm.upper() == "N"):
+                amount, category = get_amount("expense")
+                print("Please confirm the category and amount:")
+                print(f"{category}: ${amount}\n")
+                confirm = input("Please choose Y/N, or if you like to cancel type EXIT:\n")
+            if confirm.upper() == "Y":
+                print(f"Adding ${amount} spent on {category} to the worksheet...")
+                #add new expense to worksheet
+                break
+            elif confirm.upper() == "N":
+                print("Erasing data...Try again.\n")
+                continue
+            elif confirm.upper() == "EXIT":
+                print("Canceling operation...\n")
+                break
+            else:
+                confirm = input("Invalid answer.Please type Y, N, or EXIT:")
+                pass
     elif int(choice) == 5:
         amount, category = get_amount("income")
         print(f"Adding ${amount} earned from {category} to the worksheet...")
