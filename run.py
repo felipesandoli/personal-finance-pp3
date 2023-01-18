@@ -133,6 +133,24 @@ def display_amounts_by_category(amounts_dict, type):
     print("\n")
 
 
+def get_amount(type):
+    """"
+    Requests an amount from the user to be added as an income or expense with its
+    respective category to the spreadsheet. Return the amount and category as a tuple.
+    """
+    print(f"Adding a new {type}...\n")
+    amount = input("Please enter the amount you would like to add:\n")
+    #validate_amount()
+    categories = category_dictionary[f"{type}_categories"]
+    print(f"Please choose one of the following categories for this {type}\n")
+    for item in categories:
+        print(f"{item}: {categories[item]}")
+    print("\n")
+    category_index = input(f"Please enter the number corresponding to your category:\n")
+    #validate_category
+    return (amount, category_dictionary[f"{type}_categories"][category_index])
+
+
 # Validation method inspired by love sandwiches walkthrough project
 def validate_choice(choice):
     """
