@@ -55,7 +55,7 @@ def display_menu():
             "Please chosse an option by typing a number from the menu above: \n"
         )
 
-        if validate_choice(choice):
+        if validate_choice(choice, 1, 7):
             break
 
     return choice
@@ -147,17 +147,24 @@ def get_amount(type):
     """
     categories = category_dictionary[f"{type}s_categories"]
     print(f"Adding a new {type}...\n")
+    
     #asks for the amount and category. loops until the user confirm choice or exit
     while True:
         amount = input("Please enter the amount you would like to add:\n")
         #validate_amount()
-        print(f"Please choose one of the following categories for this {type}\n")
-        for item in categories:
-            print(f"{item}: {categories[item]}")
-        print("\n")
-        category_index = input(f"Please enter the number corresponding to your category:\n")
-        #validate_category
+
+        while True:
+            print(f"Please choose one of the following categories for this {type}\n")
+            for item in categories:
+                print(f"{item}: {categories[item]}")
+            print("\n")
+            category_index = input(f"Please enter the number corresponding to your category:\n")
+            categories_size = len(categories) + 1
+            if validate_choice(category_index, 1, categories_size):
+                break
+
         category = category_dictionary[f"{type}s_categories"][category_index]
+
         confirm = confirm_choice()
         if confirm == "Y":
             break
@@ -169,6 +176,7 @@ def get_amount(type):
             category = None
             print("Cancelling operation...\n")
             break
+
     return (amount, category)
 
 
@@ -186,10 +194,10 @@ def confirm_choice():
             continue
 
 # Validation method inspired by love sandwiches walkthrough project
-def validate_choice(choice):
+def validate_choice(choice, lower_limit, upper_limit):
     """
     Tries to convert choice into an integer and checks if it is in the range
-    of possible choices. Raises ValueError if cannot convert into an integer or
+    of possible choices. Informs the user if cannot convert into an integer or
     if it is outside of range.
     """
     try:
@@ -198,7 +206,7 @@ def validate_choice(choice):
         print("Not a number. Please try again.")
         return False
     try:
-        if int(choice) not in range(1, 7):
+        if int(choice) not in range(lower_limit, upper_limit):
             raise ValueError("Option not found")
     except ValueError as e:
         print(f"{e}. Try again.")
