@@ -49,7 +49,7 @@ def display_menu():
     print("5. Add a new income")
     print("6. Exit\n")
 
-    # Validates option, based on love sandwiches walkthrough project
+    # Validates function based on Love Sandwiches walkthrough project
     while True:
         choice = input(
             "Please chosse an option by typing a number from the menu above: \n"
@@ -80,12 +80,12 @@ def evaluate_choice(choice):
         amount, category = get_amount("expense")
         if amount != None and category != None:
             print(f"Adding ${amount} spent on {category} to the worksheet...\n")
-            #add new expense to worksheet
+            update_worksheet([float(amount), category], "expenses")
     elif int(choice) == 5:
         amount, category = get_amount("income")
         if amount != None and category != None:
             print(f"Adding ${amount} earned from {category} to the worksheet...\n")
-            #add new expense to worksheet
+            update_worksheet([float(amount), category], "incomes")
     elif int(choice) == 6:
         print("Exiting program. Goodbye!\n")
 
@@ -182,6 +182,15 @@ def get_amount(type):
 
     return (amount, category)
 
+# Update worksheet function based on Love Sandwiches walkthrough project
+def update_worksheet(amount_category, worksheet):
+    """
+    Insert a list containing an amount and a category to the corresponding worksheet.
+    
+    """
+    SHEET.worksheet(worksheet).append_row(amount_category)
+    print(f"Worksheet updated successfully. {amount_category[1]}: ${amount_category[0]} Added to {worksheet}")
+
 
 def confirm_choice():
     while True:
@@ -196,7 +205,7 @@ def confirm_choice():
             print("Invalid choice. Please try again")
             continue
 
-# Validation method inspired by love sandwiches walkthrough project
+# Validation function based on Love Sandwiches walkthrough project
 def validate_choice(choice, lower_limit, upper_limit):
     """
     Tries to convert choice into an integer and checks if it is in the range
