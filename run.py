@@ -124,7 +124,7 @@ def calculate_amounts_by_category(type):
     amounts_by_category = {key: 0 for key in category_dictionary[f"{type}_categories"].values()}
     for value in category_dictionary[f"{type}_categories"].values():
         for amount, category in zip(amounts, worksheet_categories):
-            if value.lower() == category:
+            if value == category:
                 amounts_by_category[value] += float(amount)
     return amounts_by_category
 
