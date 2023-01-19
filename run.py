@@ -150,8 +150,10 @@ def get_amount(type):
 
     #asks for the amount and category. loops until the user confirm choice or exit
     while True:
-        amount = input("Please enter the amount you would like to add:\n")
-        #validate_amount()
+        while True:
+            amount = input("Please enter the amount you would like to add:\n")
+            if validate_amount(amount):
+                break
 
         while True:
             print(f"Please choose one of the following categories for this {type}\n")
@@ -213,6 +215,14 @@ def validate_choice(choice, lower_limit, upper_limit):
         print(f"{e}. Try again.")
         return False
     return True
+
+
+def validate_amount(amount):
+    if len(amount.split(".")) == 2 and len(amount.split(".")[-1]) == 2:
+        return True
+    else:
+        print("Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n")
+        return False
 
 
 def main():
