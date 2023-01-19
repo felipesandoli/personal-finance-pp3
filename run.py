@@ -147,7 +147,7 @@ def get_amount(type):
     """
     categories = category_dictionary[f"{type}s_categories"]
     print(f"Adding a new {type}...\n")
-    
+
     #asks for the amount and category. loops until the user confirm choice or exit
     while True:
         amount = input("Please enter the amount you would like to add:\n")
@@ -165,6 +165,7 @@ def get_amount(type):
 
         category = category_dictionary[f"{type}s_categories"][category_index]
 
+        print(f"Adding {category}: ${amount} to the worksheet...")
         confirm = confirm_choice()
         if confirm == "Y":
             break
