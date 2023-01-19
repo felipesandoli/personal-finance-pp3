@@ -143,9 +143,11 @@ def get_amount(type):
     """"
     Requests an amount from the user to be added as an income or expense with its
     respective category to the spreadsheet. Return the amount and category as a tuple.
+    Type can be income or expense
     """
     categories = category_dictionary[f"{type}s_categories"]
     print(f"Adding a new {type}...\n")
+    #asks for the amount and category. loops until the user confirm choice or exit
     while True:
         amount = input("Please enter the amount you would like to add:\n")
         #validate_amount()
