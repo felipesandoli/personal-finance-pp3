@@ -77,30 +77,15 @@ def evaluate_choice(choice):
         income_by_category = calculate_amounts_by_category("incomes")
         display_amounts_by_category(income_by_category, "incomes")
     elif int(choice) == 4:
-        confirm = ""
-        while True:
-            if (confirm.upper() == "") or (confirm.upper() == "N"):
-                amount, category = get_amount("expense")
-                print("Please confirm the category and amount:")
-                print(f"{category}: ${amount}\n")
-                confirm = input("Please choose Y/N, or if you like to cancel type EXIT:\n")
-            if confirm.upper() == "Y":
-                print(f"Adding ${amount} spent on {category} to the worksheet...")
-                #add new expense to worksheet
-                break
-            elif confirm.upper() == "N":
-                print("Erasing data...Try again.\n")
-                continue
-            elif confirm.upper() == "EXIT":
-                print("Canceling operation...\n")
-                break
-            else:
-                confirm = input("Invalid answer.Please type Y, N, or EXIT:")
-                pass
+        amount, category = get_amount("expense")
+        if amount != None and category != None:
+            print(f"Adding ${amount} spent on {category} to the worksheet...\n")
+            #add new expense to worksheet
     elif int(choice) == 5:
         amount, category = get_amount("income")
-        print(f"Adding ${amount} earned from {category} to the worksheet...")
-        #add new expense to worksheet
+        if amount != None and category != None:
+            print(f"Adding ${amount} earned from {category} to the worksheet...\n")
+            #add new expense to worksheet
     elif int(choice) == 6:
         print("Exiting program. Goodbye!\n")
 
@@ -159,18 +144,44 @@ def get_amount(type):
     Requests an amount from the user to be added as an income or expense with its
     respective category to the spreadsheet. Return the amount and category as a tuple.
     """
-    print(f"Adding a new {type}...\n")
-    amount = input("Please enter the amount you would like to add:\n")
-    #validate_amount()
     categories = category_dictionary[f"{type}s_categories"]
-    print(f"Please choose one of the following categories for this {type}\n")
-    for item in categories:
-        print(f"{item}: {categories[item]}")
-    print("\n")
-    category_index = input(f"Please enter the number corresponding to your category:\n")
-    #validate_category
-    return (amount, category_dictionary[f"{type}s_categories"][category_index])
+    print(f"Adding a new {type}...\n")
+    while True:
+        amount = input("Please enter the amount you would like to add:\n")
+        #validate_amount()
+        print(f"Please choose one of the following categories for this {type}\n")
+        for item in categories:
+            print(f"{item}: {categories[item]}")
+        print("\n")
+        category_index = input(f"Please enter the number corresponding to your category:\n")
+        #validate_category
+        category = category_dictionary[f"{type}s_categories"][category_index]
+        confirm = confirm_choice()
+        if confirm == "Y":
+            break
+        elif confirm == "N":
+            print("Deleting entry... Try again.\n")
+            pass
+        elif confirm == "EXIT":
+            amount = None
+            category = None
+            print("Cancelling operation...\n")
+            break
+    return (amount, category)
 
+
+def confirm_choice():
+    while True:
+        confirm = input("Please choose Y/N, or if you like to cancel type EXIT:\n")
+        if confirm.upper() == "Y":
+            return "Y"
+        elif confirm.upper() == "N":
+            return "N"
+        elif confirm.upper() == "EXIT":
+            return "EXIT"
+        else:
+            print("Invalid choice. Please try again")
+            continue
 
 # Validation method inspired by love sandwiches walkthrough project
 def validate_choice(choice):
