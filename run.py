@@ -87,7 +87,7 @@ def evaluate_choice(choice):
             print(f"Adding " +Fore.GREEN + f"${amount}" +Style.RESET_ALL + f" earned from {category} to the worksheet...\n")
             update_worksheet([float(amount), category], "incomes")
     elif int(choice) == 6:
-        print("Exiting program. Goodbye!\n")
+        display_exit_message()
 
 
 def calculate_balance():
@@ -252,12 +252,17 @@ def validate_amount(amount):
         print(Style.RESET_ALL)
         return False
 
+def display_exit_message():
+    print(Fore.BLUE + "Thank you for using Personal Finance!")
+    print("Exiting program...Goodbye!" + Style.RESET_ALL + "\n")
 
 def main():
     """
     Calls functin for displaying the menu to the terminal, then calls function to evaluate the user choice.
     """
-    print("Welcome to your personal finance.\n")
+    # Clear terminal, code taken from Stack Overflow
+    os.system("cls" if os.name == "nt" else "clear")
+    print(Fore.BLUE + "Welcome to your personal finance.\n" + Style.RESET_ALL + "\n")
     choice = display_menu()
     evaluate_choice(choice)
 
@@ -273,7 +278,7 @@ def main():
         elif again.upper() == "N":
             # Clear terminal, code taken from Stack Overflow
             os.system("cls" if os.name == "nt" else "clear")
-            print("Exiting program. Goodbye!")
+            display_exit_message()
             break
         else:
             print(Fore.RED + "Invalid answer, please type Y or N.\n")
