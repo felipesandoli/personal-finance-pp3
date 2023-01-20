@@ -18,22 +18,21 @@ SHEET = GSPREAD_CLIENT.open("personal-finance-pp3")
 
 category_dictionary = {
     "expenses_categories": {
-    "1": "Housing",
-    "2": "Transportation",
-    "3": "Groceries",
-    "4": "Utilities",
-    "5": "Medical & Healthcare",
-    "6": "Personal Spending",
-    "7": "Leisure",
-    "8": "Others",
+        "1": "Housing",
+        "2": "Transportation",
+        "3": "Groceries",
+        "4": "Utilities",
+        "5": "Medical & Healthcare",
+        "6": "Personal Spending",
+        "7": "Leisure",
+        "8": "Others",
     },
-
     "incomes_categories": {
         "1": "Salary & Wages",
         "2": "Investment returns",
         "3": "Rental Income",
         "4": "Others",
-    }
+    },
 }
 
 
@@ -121,7 +120,9 @@ def calculate_amounts_by_category(type):
     print(f"Calculating your {type} summary...")
     amounts = SHEET.worksheet(type).col_values(1)
     worksheet_categories = SHEET.worksheet(type).col_values(2)
-    amounts_by_category = {key: 0 for key in category_dictionary[f"{type}_categories"].values()}
+    amounts_by_category = {
+        key: 0 for key in category_dictionary[f"{type}_categories"].values()
+    }
     for value in category_dictionary[f"{type}_categories"].values():
         for amount, category in zip(amounts, worksheet_categories):
             if value == category:
@@ -140,7 +141,7 @@ def display_amounts_by_category(amounts_dict, type):
 
 
 def get_amount(type):
-    """"
+    """ "
     Requests an amount from the user to be added as an income or expense with its
     respective category to the spreadsheet. Return the amount and category as a tuple.
     Type can be income or expense
@@ -148,7 +149,7 @@ def get_amount(type):
     categories = category_dictionary[f"{type}s_categories"]
     print(f"Adding a new {type}...\n")
 
-    #asks for the amount and category. loops until the user confirm choice or exit
+    # asks for the amount and category. loops until the user confirm choice or exit
     while True:
         while True:
             amount = input("Please enter the amount you would like to add:\n")
@@ -160,7 +161,9 @@ def get_amount(type):
             for item in categories:
                 print(f"{item}: {categories[item]}")
             print("\n")
-            category_index = input(f"Please enter the number corresponding to your category:\n")
+            category_index = input(
+                f"Please enter the number corresponding to your category:\n"
+            )
             categories_size = len(categories) + 1
             if validate_choice(category_index, 1, categories_size):
                 break
@@ -182,14 +185,17 @@ def get_amount(type):
 
     return (amount, category)
 
+
 # Update worksheet function based on Love Sandwiches walkthrough project
 def update_worksheet(amount_category, worksheet):
     """
     Insert a list containing an amount and a category to the corresponding worksheet.
-    
+
     """
     SHEET.worksheet(worksheet).append_row(amount_category)
-    print(f"Worksheet updated successfully. {amount_category[1]}: ${amount_category[0]} Added to {worksheet}")
+    print(
+        f"Worksheet updated successfully. {amount_category[1]}: ${amount_category[0]} Added to {worksheet}"
+    )
 
 
 def confirm_choice():
@@ -204,6 +210,7 @@ def confirm_choice():
         else:
             print("Invalid choice. Please try again")
             continue
+
 
 # Validation function based on Love Sandwiches walkthrough project
 def validate_choice(choice, lower_limit, upper_limit):
@@ -230,7 +237,9 @@ def validate_amount(amount):
     if len(amount.split(".")) == 2 and len(amount.split(".")[-1]) == 2:
         return True
     else:
-        print("Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n")
+        print(
+            "Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n"
+        )
         return False
 
 
