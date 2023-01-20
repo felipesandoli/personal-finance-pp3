@@ -200,7 +200,7 @@ def update_worksheet(amount_category, worksheet):
     """
     SHEET.worksheet(worksheet).append_row(amount_category)
     print(
-        f"Worksheet updated successfully. {amount_category[1]}: " + Fore.GREEN + f"${amount_category[0]}" + Style.RESET_ALL + " Added to {worksheet}"
+        f"Worksheet updated successfully. {amount_category[1]}: " + Fore.GREEN + f"${amount_category[0]}" + Style.RESET_ALL + f" Added to {worksheet}"
     )
 
 
