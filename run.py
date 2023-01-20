@@ -2,6 +2,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import os
+from colorama import Fore, Back, Style
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -78,12 +79,12 @@ def evaluate_choice(choice):
     elif int(choice) == 4:
         amount, category = get_amount("expense")
         if amount != None and category != None:
-            print(f"Adding ${amount} spent on {category} to the worksheet...\n")
+            print("Adding " + Fore.GREEN + f"${amount}" + Style.RESET_ALL + f" spent on {category} to the worksheet...\n")
             update_worksheet([float(amount), category], "expenses")
     elif int(choice) == 5:
         amount, category = get_amount("income")
         if amount != None and category != None:
-            print(f"Adding ${amount} earned from {category} to the worksheet...\n")
+            print(f"Adding " +Fore.GREEN + f"${amount}" +Style.RESET_ALL + f" earned from {category} to the worksheet...\n")
             update_worksheet([float(amount), category], "incomes")
     elif int(choice) == 6:
         print("Exiting program. Goodbye!\n")
@@ -109,7 +110,12 @@ def display_balance(balance):
     """
     Displays the current balance to the terminal.
     """
-    print(f"Your current balance is: ${balance:.2f}\n")
+    if balance < 0:
+        color = Fore.RED + "-$"
+    else:
+        color = Fore.GREEN + "$"
+    print("Your current balance is: " + color + f"{abs(balance):.2f}\n")
+    print(Style.RESET_ALL)
 
 
 def calculate_amounts_by_category(type):
@@ -136,7 +142,7 @@ def display_amounts_by_category(amounts_dict, type):
     """
     print(f"The total amount of {type} by each category is:\n")
     for key in amounts_dict:
-        print(f"{key}: ${amounts_dict[key]:.2f}")
+        print(f"{key}: " + Fore.GREEN + f"${amounts_dict[key]:.2f}" + Style.RESET_ALL)
     print("\n")
 
 
@@ -170,7 +176,7 @@ def get_amount(type):
 
         category = category_dictionary[f"{type}s_categories"][category_index]
 
-        print(f"Adding {category}: ${amount} to the worksheet...")
+        print(f"Adding {category}: " +Fore.GREEN + f"${amount}" + Style.RESET_ALL + " to the worksheet...")
         confirm = confirm_choice()
         if confirm == "Y":
             break
@@ -194,7 +200,7 @@ def update_worksheet(amount_category, worksheet):
     """
     SHEET.worksheet(worksheet).append_row(amount_category)
     print(
-        f"Worksheet updated successfully. {amount_category[1]}: ${amount_category[0]} Added to {worksheet}"
+        f"Worksheet updated successfully. {amount_category[1]}: " + Fore.GREEN + f"${amount_category[0]}" + Style.RESET_ALL + " Added to {worksheet}"
     )
 
 
@@ -208,7 +214,8 @@ def confirm_choice():
         elif confirm.upper() == "EXIT":
             return "EXIT"
         else:
-            print("Invalid choice. Please try again")
+            print(Fore.RED + "Invalid choice. Please try again")
+            print(Style.RESET_ALL)
             continue
 
 
@@ -222,13 +229,15 @@ def validate_choice(choice, lower_limit, upper_limit):
     try:
         int(choice)
     except:
-        print("Not a number. Please try again.")
+        print(Fore.RED + "Not a number. Please try again.")
+        print(Style.RESET_ALL)
         return False
     try:
         if int(choice) not in range(lower_limit, upper_limit):
             raise ValueError("Option not found")
     except ValueError as e:
-        print(f"{e}. Try again.")
+        print(Fore.RED + f"{e}. Try again.")
+        print(Style.RESET_ALL)
         return False
     return True
 
@@ -237,9 +246,10 @@ def validate_amount(amount):
     if len(amount.split(".")) == 2 and len(amount.split(".")[-1]) == 2:
         return True
     else:
-        print(
+        print(Fore.RED +
             "Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n"
         )
+        print(Style.RESET_ALL)
         return False
 
 
@@ -266,7 +276,8 @@ def main():
             print("Exiting program. Goodbye!")
             break
         else:
-            print("Invalid answer, please type Y or N.\n")
+            print(Fore.RED + "Invalid answer, please type Y or N.\n")
+            print(Style.RESET_ALL)
 
 
 main()
