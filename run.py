@@ -253,7 +253,7 @@ def validate_amount(amount):
         return False
 
 def display_exit_message():
-    print(Fore.BLUE + "Thank you for using Personal Finance!")
+    print(Fore.BLUE + Back.WHITE + "Thank you for using Personal Finance!")
     print("Exiting program...Goodbye!" + Style.RESET_ALL + "\n")
 
 def main():
@@ -262,7 +262,7 @@ def main():
     """
     # Clear terminal, code taken from Stack Overflow
     os.system("cls" if os.name == "nt" else "clear")
-    print(Fore.BLUE + "Welcome to your personal finance.\n" + Style.RESET_ALL + "\n")
+    print(Fore.BLUE + Back.WHITE + "Welcome to your personal finance.\n" + Style.RESET_ALL + "\n")
     choice = display_menu()
     evaluate_choice(choice)
 
