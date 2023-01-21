@@ -24,6 +24,8 @@ Developed by: [Carlos Felipe Capobianco Sandoli](https://github.com/felipesandol
 
 ### Project Goals
 
+The objective of this project is to provide an application for managing personal finance. The user can check their balance, add new expenses and incomes and check the total amount spent or earned for each of a set of categories.
+
 ### User Stories
 
 ## Design
