@@ -99,6 +99,11 @@ This can be done by chosing option 6 in the main menu or by typing N when prompt
 
 ## Future Improvements
 
+- Using the datetime python module to add the date an expense or income is being added to the spreadsheet. This would take the current date when the users enter new data.
+- Displaying the amount that has been spent or earned for each month/year.
+- Add the option for the user to add a description for new data being entered.
+- Add the option for the user to chose a category to display all the expenses or incomes for that category with its respective descriptions, dates and times.
+
 ## Testing
 
 ### Validation
