@@ -79,12 +79,24 @@ def evaluate_choice(choice):
     elif int(choice) == 4:
         amount, category = get_amount("expense")
         if amount != None and category != None:
-            print("Adding " + Fore.GREEN + f"${amount}" + Style.RESET_ALL + f" spent on {category} to the worksheet...\n")
+            print(
+                "Adding "
+                + Fore.GREEN
+                + f"${amount}"
+                + Style.RESET_ALL
+                + f" spent on {category} to the worksheet...\n"
+            )
             update_worksheet([float(amount), category], "expenses")
     elif int(choice) == 5:
         amount, category = get_amount("income")
         if amount != None and category != None:
-            print(f"Adding " +Fore.GREEN + f"${amount}" +Style.RESET_ALL + f" earned from {category} to the worksheet...\n")
+            print(
+                f"Adding "
+                + Fore.GREEN
+                + f"${amount}"
+                + Style.RESET_ALL
+                + f" earned from {category} to the worksheet...\n"
+            )
             update_worksheet([float(amount), category], "incomes")
     elif int(choice) == 6:
         display_exit_message()
@@ -176,7 +188,13 @@ def get_amount(type):
 
         category = category_dictionary[f"{type}s_categories"][category_index]
 
-        print(f"Adding {category}: " +Fore.GREEN + f"${amount}" + Style.RESET_ALL + " to the worksheet...")
+        print(
+            f"Adding {category}: "
+            + Fore.GREEN
+            + f"${amount}"
+            + Style.RESET_ALL
+            + " to the worksheet..."
+        )
         confirm = confirm_choice()
         if confirm == "Y":
             break
@@ -200,7 +218,11 @@ def update_worksheet(amount_category, worksheet):
     """
     SHEET.worksheet(worksheet).append_row(amount_category)
     print(
-        f"Worksheet updated successfully. {amount_category[1]}: " + Fore.GREEN + f"${amount_category[0]}" + Style.RESET_ALL + f" Added to {worksheet}"
+        f"Worksheet updated successfully. {amount_category[1]}: "
+        + Fore.GREEN
+        + f"${amount_category[0]}"
+        + Style.RESET_ALL
+        + f" Added to {worksheet}"
     )
 
 
@@ -246,15 +268,18 @@ def validate_amount(amount):
     if len(amount.split(".")) == 2 and len(amount.split(".")[-1]) == 2:
         return True
     else:
-        print(Fore.RED +
-            "Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n"
+        print(
+            Fore.RED
+            + "Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n"
         )
         print(Style.RESET_ALL)
         return False
 
+
 def display_exit_message():
     print(Fore.BLUE + Back.WHITE + "Thank you for using Personal Finance!")
     print("Exiting program...Goodbye!" + Style.RESET_ALL + "\n")
+
 
 def main():
     """
@@ -262,7 +287,13 @@ def main():
     """
     # Clear terminal, code taken from Stack Overflow
     os.system("cls" if os.name == "nt" else "clear")
-    print(Fore.BLUE + Back.WHITE + "Welcome to your personal finance.\n" + Style.RESET_ALL + "\n")
+    print(
+        Fore.BLUE
+        + Back.WHITE
+        + "Welcome to your personal finance.\n"
+        + Style.RESET_ALL
+        + "\n"
+    )
     choice = display_menu()
     evaluate_choice(choice)
 
