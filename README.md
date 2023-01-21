@@ -30,6 +30,10 @@ Developed by: [Carlos Felipe Capobianco Sandoli](https://github.com/felipesandol
 
 ### Project Flowchart
 
+This flowchart demonstrates the logic behind the application:
+
+![Project Flowchart](./documentation/personal-finance-pp3-flowchart.png)
+
 ### Features
 
 ## Technologies Used
