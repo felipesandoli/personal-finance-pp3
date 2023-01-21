@@ -34,6 +34,14 @@ Developed by: [Carlos Felipe Capobianco Sandoli](https://github.com/felipesandol
 
 ## Technologies Used
 
+- Python 3.8.10 for developing the application.
+- Git for version control.
+- GitHub for hosting the repository.
+- Heroku for deploying the application.
+- Google Sheets for storing the data.
+- Google Sheets and Google Drive API for retrieving data and adding new data to the spreadsheet.
+- Colorama for adding better visual feedback to the user.
+
 ## Future Improvements
 
 ## Testing
