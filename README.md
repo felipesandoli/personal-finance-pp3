@@ -44,6 +44,49 @@ This flowchart demonstrates the logic behind the application:
 
 ### Features
 
+- Main menu
+
+The main menu contains 6 options for the user to chose.
+
+![Main menu](./documentation/features/main-menu.png)
+
+- Displaying the balance
+
+This option deducts the total amount of expenses from the total amount of earnings and displays it to the user. A negative amount is shown in red, a positive amount in green.
+
+![Positive balance](./documentation/features/balance.png)
+![Negative balance](./documentation/features/negative-balance.png)
+
+- Displaying expenses summary
+
+Adds all the expenses of each category and displays a summary to the user.
+
+![Expenses summary](./documentation/features/expenses-summary.png)
+
+- Display incomes summary
+
+Adds all the earnings of each category and displays a summary to the user.
+
+![Income summary](./documentation/features/income-summary.png)
+
+- Add new expense
+
+Requests the amount and category to the user. Displays the amount and category and asks if the user would like to confirm. Confirming will add the amount and category entered to the spreadsheet in the expenses worksheet. If the user choses not to confirm by entering N, deletes the previous amount and category entered and asks for it again. Chosing the EXIT option will return to the main menu.
+
+![Adding new expense](./documentation/features/add-expense.png)
+
+- Add new income
+
+Requests the amount and category to the user. Displays the amount and category and asks if the user would like to confirm. Confirming will add the amount and category entered to the spreadsheet in the incomes worksheet. If the user choses not to confirm by entering N, deletes the previous amount and category entered and asks for it again. Chosing the EXIT option will return to the main menu.
+
+![Adding new income](./documentation/features/add-income.png)
+
+- Exit program
+
+This can be done by chosing option 6 in the main menu or by typing N when prompted if the user would like to do anything else. Displays a goodbye message and closes the program.
+
+![Exiting program](./documentation/features/exiting-program.png)
+
 ## Technologies Used
 
 - Python 3.8.10 for developing the application.
