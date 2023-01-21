@@ -1,31 +1,47 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Personal Finance
 
-Welcome USER_NAME,
+[Visit the live application](https://personal-finance-pp3.herokuapp.com/)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Developed by: [Carlos Felipe Capobianco Sandoli](https://github.com/felipesandoli)
 
-## Reminders
+## Table of Content:
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+- [Project Overview](#project-overview)
+    - [Project Goals](#project-goals)
+    - [User Stories](#user-stories)
+- [Design](#design)
+    - [Project Flowchart](#project-flowchart)
+    - [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Future Improvements](#future-improvements)
+- [Testing](#testing)
+    - [Validation](#validation)
+    - [Manual Testing](#manual-testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
 
-## Creating the Heroku app
+## Project Overview
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Project Goals
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### User Stories
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Design
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Project Flowchart
 
-Connect your GitHub repository and deploy as normal.
+### Features
 
-## Constraints
+## Technologies Used
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Future Improvements
 
------
-Happy coding!
+## Testing
+
+### Validation
+
+### Manual Testing
+
+## Deployment
+
+## Credits
