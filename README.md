@@ -57,3 +57,7 @@ This flowchart demonstrates the logic behind the application:
 ## Deployment
 
 ## Credits
+
+- [Stack Overflow](https://stackoverflow.com/questions/2084508/clear-terminal-in-python): Clearing the terminal.
+- Love Sandwiches project: Code for validating input and connecting to the API.
+- [Colorama](https://pypi.org/project/colorama/): Adding more visual feedback to the user with colored text.
