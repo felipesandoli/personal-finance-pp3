@@ -28,6 +28,12 @@ The objective of this project is to provide an application for managing personal
 
 ### User Stories
 
+- As a user I would like to check my balance
+- As a user I would like to check how much I have spent in different types of expenses.
+- As a user I would like to check how much I have earned from different sources.
+- As a user I would like to log in new expenses.
+- As a user I would like to log in new earnings.
+
 ## Design
 
 ### Project Flowchart
