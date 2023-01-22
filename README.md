@@ -110,6 +110,10 @@ This can be done by chosing option 6 in the main menu or by typing N when prompt
 
 ### Validation
 
+The code was validated using the [PEP8 CI Python Linter](https://pep8ci.herokuapp.com/). Initially a few errors regarding line lengths, error handling and comparisson code were found. These were fixed and the code passed with no errors.
+
+![PEP8 CI Python Linter Passed](./documentation/python-validator.png)
+
 ### Manual Testing
 
 ## Deployment
