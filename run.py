@@ -179,14 +179,14 @@ def get_amount(type):
             if validate_amount(amount):
                 break
 
+        print(
+            "Please choose one of the following categories for this"
+            + f" {type}\n"
+        )
+        for item in categories:
+            print(f"{item}: {categories[item]}")
+        print("\n")
         while True:
-            print(
-                "Please choose one of the following categories for this"
-                + f" {type}\n"
-            )
-            for item in categories:
-                print(f"{item}: {categories[item]}")
-            print("\n")
             category_index = input(
                 "Please enter the number corresponding to your category:\n"
             )
