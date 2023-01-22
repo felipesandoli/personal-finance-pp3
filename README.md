@@ -116,6 +116,37 @@ The code was validated using the [PEP8 CI Python Linter](https://pep8ci.herokuap
 
 ### Manual Testing
 
+As shown in the [features](#features) sections, when entering the correct input all features work correcly. Here we will be seeing how the application handles incorrect data. All error messages are displayed in red for a better visual feedback.
+
+In the main menu, two errors can be made by the user. They can type in somthing that is not a number, or the can type in a number that is not an valid option. The application displays the relevant message and asks for a new input until the user chooses a valid option. Then the terminal will be cleared before displaying the content of the chosen option.
+
+![Main menu errors](./documentation/testing/main-menu-errors.png)
+
+When adding a new expense or income to the spreadsheet, first the user has to enter the amount. Here they should always enter a number with two decimal places. If they enter a different format they will be asked to enter two decimal places with an example. Initially two bugs were present in this validation. The user could enter any amount of numbers separated by any amount of dots (e.g 100.00.00.00), this was fixed to allow only two sets of numbers separated by one dot. Additionally if the user entered a string with two characters after a dot, The application would also accept. Both bugs were fixed. Now the application displays the relevant information and asks for the input again. The same applies to adding a new income.
+
+![Add new expense amount errors](./documentation/testing/new-amount-errors.png)
+
+After entering a correct amount. The user must chose a category. Here they must choose the correct category by selecting the number associated with and it is validated just like in the main menu. At first, the application would show the options again everytime the user entered an invalid input. This was fixed so only the error message and the request message would be displayed after an incorrect answer.
+
+![Adding new income category errors](./documentation/testing/category-input-errors.png)
+
+If the user enters a valid amount and category, then they will be requested to confirm the data. Here they can chose yes (typing 'y' or 'Y') for confirming the data, no (typing 'n' or 'N') to make corrections and entering a new amount and category, or exit (typing 'exit' or 'EXIT') for canceling the operation. If they enter any value that is not one of the options provided, an error message will be displayed and an input will be requested again until they enter a valid option.
+
+![Adding new income confirming errors](./documentation/testing/confirming-choice-errors.png)
+
+In the [features](#features) sections we saw what happens when the user confirms the data. A feedback message is displayed to inform the user the data was successfully added to the spreadsheet. If they choose no, they will be asked to enter new data.
+
+![Change data to be added](./documentation/testing/new-data-not-confirmed.png)
+
+If the user choses to exit. The operation will be cancelled and they will be requested if they would like to do anything else. If yes they will be returned to the main menu, if no the application will close. They will also be informed if an incorrect answer was entered.
+
+![Exiting operation. Error message for continuing in the application](./documentation/testing/exit-continue-error.png)
+
+In fact, after any operation performed, the user will be asked if they would like to continue.
+
+If the user choses to exit the program by chosing not to continue after performing an operation or by chosing the option 6 from the main menu, the same message will be displayed. This was demonstrated in the [features](#features) section.
+
+
 ## Deployment
 
 This application was deployed through Heroku. The following are the steps followed for deployment:
