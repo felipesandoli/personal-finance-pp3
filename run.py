@@ -276,13 +276,13 @@ def validate_choice(choice, lower_limit, upper_limit):
 
 
 def validate_amount(amount):
-    try:
-        float(amount)
-    except ValueError:
-        print(Fore.RED + "Not a number. Please try again.")
-        print(Style.RESET_ALL)
-        return False
     if len(amount.split(".")) == 2 and len(amount.split(".")[-1]) == 2:
+        try:
+            float(amount)
+        except ValueError:
+            print(Fore.RED + "Not a number. Please try again.")
+            print(Style.RESET_ALL)
+            return False
         return True
     else:
         print(
