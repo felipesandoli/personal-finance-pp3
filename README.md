@@ -44,6 +44,8 @@ This flowchart demonstrates the logic behind the application:
 
 ### Features
 
+The following are a description of the program features when the correct inputs are entered. The input validation errors will be shown in the [manual testing](#manual-testing) section.
+
 - Main menu
 
 The main menu contains 6 options for the user to chose.

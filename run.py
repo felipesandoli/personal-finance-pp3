@@ -52,7 +52,8 @@ def display_menu():
     # Validates function based on Love Sandwiches walkthrough project
     while True:
         choice = input(
-            "Please chosse an option by typing a number from the menu above: \n"
+            "Please chosse an option by typing a number from the menu above: "
+            + "\n"
         )
 
         if validate_choice(choice, 1, 7):
@@ -78,7 +79,7 @@ def evaluate_choice(choice):
         display_amounts_by_category(income_by_category, "incomes")
     elif int(choice) == 4:
         amount, category = get_amount("expense")
-        if amount != None and category != None:
+        if amount is not None and category is not None:
             print(
                 "Adding "
                 + Fore.GREEN
@@ -89,7 +90,7 @@ def evaluate_choice(choice):
             update_worksheet([float(amount), category], "expenses")
     elif int(choice) == 5:
         amount, category = get_amount("income")
-        if amount != None and category != None:
+        if amount is not None and category is not None:
             print(
                 f"Adding "
                 + Fore.GREEN
@@ -132,8 +133,8 @@ def display_balance(balance):
 
 def calculate_amounts_by_category(type):
     """
-    Calculate the total amount spent for each expense category or the total amount of income
-    for each income category.
+    Calculate the total amount spent for each expense category or the total
+    amount of income for each income category.
     """
     print(f"Calculating your {type} summary...")
     amounts = SHEET.worksheet(type).col_values(1)
@@ -154,20 +155,24 @@ def display_amounts_by_category(amounts_dict, type):
     """
     print(f"The total amount of {type} by each category is:\n")
     for key in amounts_dict:
-        print(f"{key}: " + Fore.GREEN + f"${amounts_dict[key]:.2f}" + Style.RESET_ALL)
+        print(
+            f"{key}: "
+            + Fore.GREEN +
+            f"${amounts_dict[key]:.2f}" +
+            Style.RESET_ALL
+        )
     print("\n")
 
 
 def get_amount(type):
     """ "
-    Requests an amount from the user to be added as an income or expense with its
-    respective category to the spreadsheet. Return the amount and category as a tuple.
-    Type can be income or expense
+    Requests an amount from the user to be added as an income or expense with
+    its respective category to the spreadsheet. Return the amount and
+    category as a tuple. Type can be income or expense.
     """
     categories = category_dictionary[f"{type}s_categories"]
     print(f"Adding a new {type}...\n")
 
-    # asks for the amount and category. loops until the user confirm choice or exit
     while True:
         while True:
             amount = input("Please enter the amount you would like to add:\n")
@@ -175,12 +180,15 @@ def get_amount(type):
                 break
 
         while True:
-            print(f"Please choose one of the following categories for this {type}\n")
+            print(
+                "Please choose one of the following categories for this"
+                + f" {type}\n"
+            )
             for item in categories:
                 print(f"{item}: {categories[item]}")
             print("\n")
             category_index = input(
-                f"Please enter the number corresponding to your category:\n"
+                "Please enter the number corresponding to your category:\n"
             )
             categories_size = len(categories) + 1
             if validate_choice(category_index, 1, categories_size):
@@ -213,7 +221,8 @@ def get_amount(type):
 # Update worksheet function based on Love Sandwiches walkthrough project
 def update_worksheet(amount_category, worksheet):
     """
-    Insert a list containing an amount and a category to the corresponding worksheet.
+    Insert a list containing an amount and a category to
+    the corresponding worksheet.
 
     """
     SHEET.worksheet(worksheet).append_row(amount_category)
@@ -228,7 +237,9 @@ def update_worksheet(amount_category, worksheet):
 
 def confirm_choice():
     while True:
-        confirm = input("Please choose Y/N, or if you like to cancel type EXIT:\n")
+        confirm = input(
+            "Please choose Y/N, or if you like to cancel type EXIT:\n"
+            )
         if confirm.upper() == "Y":
             return "Y"
         elif confirm.upper() == "N":
@@ -250,7 +261,7 @@ def validate_choice(choice, lower_limit, upper_limit):
     """
     try:
         int(choice)
-    except:
+    except ValueError:
         print(Fore.RED + "Not a number. Please try again.")
         print(Style.RESET_ALL)
         return False
@@ -267,7 +278,7 @@ def validate_choice(choice, lower_limit, upper_limit):
 def validate_amount(amount):
     try:
         float(amount)
-    except:
+    except ValueError:
         print(Fore.RED + "Not a number. Please try again.")
         print(Style.RESET_ALL)
         return False
@@ -276,7 +287,8 @@ def validate_amount(amount):
     else:
         print(
             Fore.RED
-            + "Please enter an amount with two decimal places separated by a dot (i.e. 100.00)\n"
+            + "Please enter an amount with two decimal places separated"
+            + "by a dot (e.g. 100.00)\n"
         )
         print(Style.RESET_ALL)
         return False
@@ -289,7 +301,8 @@ def display_exit_message():
 
 def main():
     """
-    Calls functin for displaying the menu to the terminal, then calls function to evaluate the user choice.
+    Calls functin for displaying the menu to the terminal, then calls
+    function to evaluate the user choice.
     """
     # Clear terminal, code taken from Stack Overflow
     os.system("cls" if os.name == "nt" else "clear")
